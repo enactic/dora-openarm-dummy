@@ -17,7 +17,6 @@
 import dora
 import numpy as np
 import pyarrow as pa
-import time
 
 
 def main():
@@ -34,8 +33,7 @@ def main():
         # Main process
         event_id = event["id"]
         if event_id == "request_position":
-            timestamp = time.time_ns()
-            node.send_output("position", position, {"timestamp": timestamp})
+            node.send_output("position", position)
         elif event_id == "move_position":
             if not initialized:
                 initialized = True
